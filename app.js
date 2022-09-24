@@ -7,3 +7,5 @@ canvas.height = innerHeight
 
 wall = new Wall(50, 50, 150, 210)
 wall.draw("white")
+
+console.log(wall.calculateLength());
