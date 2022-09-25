@@ -19,15 +19,40 @@ const getRandomCoordinates = (marginFactor) => {
     }
 }
 
+const drawCircle = (x, y, radius, color) => {
+    ctx.fillStyle = color
+    ctx.strokeStyle = color
+    ctx.beginPath()
+    ctx.arc(x, y, radius, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.stroke()
+}
+
+let walls = new Array()
+
 for (let i = 0; i < 8; i++) {
     const coordinates = getRandomCoordinates(0.05)
-    wall = new Wall(coordinates.x1, coordinates.y1, coordinates.x2, coordinates.y2)
-    wall.draw("white")
+    walls.push(new Wall(coordinates.x1, coordinates.y1, coordinates.x2, coordinates.y2))
 }
 
 window.onmousemove = (ev) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    for (const wall of walls) {
+        wall.draw("white")
+    }
+
     const mouseX = ev.pageX
     const mouseY = ev.pageY
     console.log(mouseX, mouseY)
-
+    drawCircle(mouseX, mouseY, 2, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 4, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 6, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 8, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 10, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 12, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 15, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 16, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 18, "rgba(255, 255, 255, 0.15)")
+    drawCircle(mouseX, mouseY, 20, "rgba(255, 255, 255, 0.15)")
 }
