@@ -20,3 +20,11 @@ class Wall {
         return Math.sqrt((this.x2 - this.x1) ** 2 + (this.y2 - this.y1) ** 2)
     }
 }
+
+class Ray {
+    constructor(x, y, angle) {
+        this.x = x
+        this.y = y
+        this.angle = angle
+    }
+}
