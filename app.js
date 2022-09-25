@@ -24,3 +24,10 @@ for (let i = 0; i < 8; i++) {
     wall = new Wall(coordinates.x1, coordinates.y1, coordinates.x2, coordinates.y2)
     wall.draw("white")
 }
+
+window.onmousemove = (ev) => {
+    const mouseX = ev.pageX
+    const mouseY = ev.pageY
+    console.log(mouseX, mouseY)
+
+}
