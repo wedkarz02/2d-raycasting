@@ -44,15 +44,4 @@ window.onmousemove = (ev) => {
 
     const mouseX = ev.pageX
     const mouseY = ev.pageY
-    console.log(mouseX, mouseY)
-    drawCircle(mouseX, mouseY, 2, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 4, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 6, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 8, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 10, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 12, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 15, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 16, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 18, "rgba(255, 255, 255, 0.15)")
-    drawCircle(mouseX, mouseY, 20, "rgba(255, 255, 255, 0.15)")
 }
