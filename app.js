@@ -38,6 +38,10 @@ const printMousePos = (x, y, lineHeight) => {
     ctx.fillText(`Mouse Pos Y: ${y}`, 0, lineHeight * 2)
 }
 
+window.onload = () => {
+    printMousePos(0, 0, 18)
+}
+
 window.onmousemove = (ev) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
