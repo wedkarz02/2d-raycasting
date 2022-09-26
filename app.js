@@ -19,29 +19,30 @@ const getRandomCoordinates = (marginFactor) => {
     }
 }
 
-const drawCircle = (x, y, radius, color) => {
-    ctx.fillStyle = color
-    ctx.strokeStyle = color
-    ctx.beginPath()
-    ctx.arc(x, y, radius, 0, Math.PI * 2)
-    ctx.fill()
-    ctx.stroke()
+const generateWalls = (numberOfWalls, marginFactor) => {
+    let walls = new Array()
+
+    for (let i = 0; i < numberOfWalls; i++) {
+        const coordinates = getRandomCoordinates(marginFactor)
+        const wall = new Wall(coordinates.x1, coordinates.y1, coordinates.x2, coordinates.y2)
+        walls.push(wall)
+    }
+
+    return walls
 }
 
-let walls = new Array()
-
-for (let i = 0; i < 8; i++) {
-    const coordinates = getRandomCoordinates(0.05)
-    walls.push(new Wall(coordinates.x1, coordinates.y1, coordinates.x2, coordinates.y2))
+const printMousePos = (x, y, lineHeight) => {
+    ctx.font = `${lineHeight}px Consolas`
+    ctx.fillStyle = "white"
+    ctx.fillText(`Mouse Pos X: ${x}`, 0, lineHeight)
+    ctx.fillText(`Mouse Pos Y: ${y}`, 0, lineHeight * 2)
 }
 
 window.onmousemove = (ev) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    for (const wall of walls) {
-        wall.draw("white")
-    }
-
     const mouseX = ev.pageX
     const mouseY = ev.pageY
+
+    printMousePos(mouseX, mouseY, 18)
 }
