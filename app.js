@@ -31,22 +31,27 @@ const generateWalls = (numberOfWalls, marginFactor) => {
     return walls
 }
 
-const printMousePos = (x, y, lineHeight) => {
+const draw = (mouseX, mouseY, lineHeight, walls) => {
     ctx.font = `${lineHeight}px Consolas`
     ctx.fillStyle = "white"
-    ctx.fillText(`Mouse Pos X: ${x}`, 0, lineHeight)
-    ctx.fillText(`Mouse Pos Y: ${y}`, 0, lineHeight * 2)
+    ctx.fillText(`Mouse Pos X: ${mouseX}`, 0, lineHeight)
+    ctx.fillText(`Mouse Pos Y: ${mouseY}`, 0, lineHeight * 2)
+
+    for (const wall of walls) {
+        wall.draw("white")
+    }
 }
 
-window.onload = () => {
-    printMousePos(0, 0, 18)
-}
+(function main() {
+    const walls = generateWalls(5, 0.05)
+    draw(0, 0, 18, walls)
 
-window.onmousemove = (ev) => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-
-    const mouseX = ev.pageX
-    const mouseY = ev.pageY
-
-    printMousePos(mouseX, mouseY, 18)
-}
+    window.onmousemove = (ev) => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+    
+        const mouseX = ev.pageX
+        const mouseY = ev.pageY
+    
+        draw(mouseX, mouseY, 18, walls)
+    }
+}())
