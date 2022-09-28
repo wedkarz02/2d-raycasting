@@ -39,4 +39,35 @@ class Ray {
         ctx.lineTo(this.x + this.dir.x * 10, this.y + this.dir.y * 10)
         ctx.stroke()
     }
+
+    wallIntersectionCheck(wall) {
+        // https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
+        const x1 = wall.x1
+        const y1 = wall.y1
+        const x2 = wall.x2
+        const y2 = wall.y2
+
+        const x3 = this.x
+        const y3 = this.y
+        const x4 = this.x + this.dir.x
+        const y4 = this.y + this.dir.y
+
+        const denominator = 
+            (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4)
+
+        if (denominator == 0) {
+            return
+        }
+
+        const t = 
+            ((x1 - x3) * (y3 - y4) - (y1 - y3) * (x3 - x4)) / denominator
+        const u = 
+            ((x1 - x3) * (y1 - y2) - (y1 - y3) * (x1 - x2)) / denominator
+
+        if (t > 0 && t < 1 && u > 0) {
+            return true
+        } else {
+            return
+        }
+    }
 }

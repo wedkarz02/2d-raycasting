@@ -52,6 +52,12 @@ const drawText = (mouseX, mouseY, lineHeight) => {
     drawWalls(walls)
     
     const ray = new Ray(100, 200)
+    ray.draw("white")
+
+    for (const wall of walls) {
+        console.log(wall.x1, wall.y1, wall.x2, wall.y2)
+        console.log(ray.wallIntersectionCheck(wall))
+    }
 
     window.onmousemove = (ev) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
