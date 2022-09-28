@@ -47,11 +47,11 @@ const drawText = (mouseX, mouseY, lineHeight) => {
 (function main() {
     const walls = generateWalls(5, 0.05)
     const lineHeight = 18
-    
+
     drawText(0, 0, lineHeight)
     drawWalls(walls)
     
-    const ray = new Ray(0, 0)
+    const ray = new Ray(100, 200)
 
     window.onmousemove = (ev) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -62,8 +62,6 @@ const drawText = (mouseX, mouseY, lineHeight) => {
         drawText(mouseX, mouseY, lineHeight)
         drawWalls(walls)
 
-        ray.x = mouseX
-        ray.y = mouseY
-        ray.draw(600, 800, "white")
+        ray.draw("white")
     }
 }())

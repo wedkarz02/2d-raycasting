@@ -30,4 +30,13 @@ class Ray {
             y: 0
         }
     }
+
+    draw(color) {
+        ctx.strokeStyle = color
+        ctx.lineWidth = 2
+        ctx.beginPath()
+        ctx.moveTo(this.x, this.y)
+        ctx.lineTo(this.x + this.dir.x * 10, this.y + this.dir.y * 10)
+        ctx.stroke()
+    }
 }
