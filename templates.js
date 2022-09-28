@@ -25,14 +25,9 @@ class Ray {
     constructor(x, y) {
         this.x = x
         this.y = y
-    }
-
-    draw(x2, y2, color) {
-        ctx.strokeStyle = color
-        ctx.lineWidth = 1
-        ctx.beginPath()
-        ctx.moveTo(this.x, this.y)
-        ctx.lineTo(x2, y2)
-        ctx.stroke()
+        this.dir = {
+            x: 1,
+            y: 0
+        }
     }
 }
