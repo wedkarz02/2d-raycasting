@@ -68,6 +68,11 @@ const drawText = (mouseX, mouseY, lineHeight) => {
         drawText(mouseX, mouseY, lineHeight)
         drawWalls(walls)
 
+        ray.setDirection(mouseX, mouseY)
+        for (const wall of walls) {
+            ray.wallIntersectionCheck(wall)
+        }
+
         ray.draw("white")
     }
 }())
