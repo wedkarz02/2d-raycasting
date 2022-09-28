@@ -45,6 +45,7 @@ const draw = (mouseX, mouseY, lineHeight, walls) => {
 (function main() {
     const walls = generateWalls(5, 0.05)
     draw(0, 0, 18, walls)
+    const ray = new Ray(0, 0)
 
     window.onmousemove = (ev) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -53,5 +54,9 @@ const draw = (mouseX, mouseY, lineHeight, walls) => {
         const mouseY = ev.pageY
     
         draw(mouseX, mouseY, 18, walls)
+
+        ray.x = mouseX
+        ray.y = mouseY
+        ray.draw(600, 800, "white")
     }
 }())
