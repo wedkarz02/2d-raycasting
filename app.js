@@ -52,12 +52,6 @@ const drawText = (mouseX, mouseY, lineHeight) => {
     drawWalls(walls)
     
     const ray = new Ray(100, 200)
-    ray.draw("white")
-
-    for (const wall of walls) {
-        console.log(wall.x1, wall.y1, wall.x2, wall.y2)
-        console.log(ray.wallIntersectionCheck(wall))
-    }
 
     window.onmousemove = (ev) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -65,14 +59,18 @@ const drawText = (mouseX, mouseY, lineHeight) => {
         const mouseX = ev.pageX
         const mouseY = ev.pageY
         
+        ray.x = mouseX
+        ray.y = mouseY
+
         drawText(mouseX, mouseY, lineHeight)
         drawWalls(walls)
 
-        ray.setDirection(mouseX, mouseY)
+        ray.setDirection(1, 1)
         for (const wall of walls) {
-            ray.wallIntersectionCheck(wall)
+            const point = ray.wallIntersectionCheck(wall)
+            if (point) {
+                ray.cast(point)
+            }
         }
-
-        ray.draw("white")
     }
 }())
