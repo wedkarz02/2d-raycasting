@@ -40,6 +40,16 @@ class Ray {
         ctx.stroke()
     }
 
+    cast(point) {
+        console.log(point)
+        ctx.strokeStyle = "white"
+        ctx.lineWidth = 2
+        ctx.beginPath()
+        ctx.moveTo(this.x, this.y)
+        ctx.lineTo(point.x, point.y)
+        ctx.stroke()
+    }
+
     wallIntersectionCheck(wall) {
         // https://en.wikipedia.org/wiki/Line%E2%80%93line_intersection
         const x1 = wall.x1
