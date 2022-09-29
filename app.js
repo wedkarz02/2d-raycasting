@@ -51,6 +51,10 @@ const angleToCoordiantes = (angle) => {
     }
 }
 
+const degreeToRadians = (angle) => {
+    return angle * (Math.PI / 180)
+}
+
 (function main() {
     // SETUP
     const walls = generateWalls(5, 0.05)
