@@ -31,6 +31,23 @@ const generateWalls = (numberOfWalls, marginFactor) => {
     return walls
 }
 
+const generateRays = (angleStep) => {
+    let rays = new Array()
+
+    // if (!(360 % angleStep === 0)) {
+    //     angleStep = 10
+    // }
+
+    let index = 0
+    for (let angle = 0; angle < 360; angle += angleStep) {
+        const dir = angleToCoordiantes(angle)
+        rays[index] = new Ray(0, 0, dir)
+        index++
+    }
+
+    return rays
+}
+
 const drawWalls = (walls) => {
     for (const wall of walls) {
         wall.draw("white")
@@ -62,10 +79,9 @@ const degreeToRadians = (angle) => {
 
     drawText(0, 0, lineHeight)
     drawWalls(walls)
-    
-    angle = Math.PI
-    const dir = angleToCoordiantes(-angle)
-    const ray = new Ray(0, 0, dir)
+
+    const rays = generateRays(1)
+    console.log(rays);
 
     // LOOP
     window.onmousemove = (ev) => {
@@ -73,17 +89,19 @@ const degreeToRadians = (angle) => {
     
         const mouseX = ev.pageX
         const mouseY = ev.pageY
-        
-        ray.x = mouseX
-        ray.y = mouseY
 
         drawText(mouseX, mouseY, lineHeight)
         drawWalls(walls)
 
-        for (const wall of walls) {
-            const point = ray.wallIntersectionCheck(wall)
-            if (point) {
-                ray.cast(point)
+        for (const ray of rays) {
+            ray.x = mouseX
+            ray.y = mouseY
+
+            for (const wall of walls) {
+                const intersectionPoint = ray.wallIntersectionCheck(wall)
+                if (intersectionPoint) {
+                    ray.cast(intersectionPoint, "rgba(255, 255, 255, 0.4)")
+                }
             }
         }
     }
