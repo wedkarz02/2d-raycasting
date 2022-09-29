@@ -65,7 +65,10 @@ class Ray {
             ((x1 - x3) * (y1 - y2) - (y1 - y3) * (x1 - x2)) / denominator
 
         if (t > 0 && t < 1 && u > 0) {
-            return true
+            return {
+                x: x1 + t * (x2 - x1),
+                y: y1 + t * (y2 - y1)
+            }
         } else {
             return
         }
