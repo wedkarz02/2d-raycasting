@@ -22,27 +22,14 @@ class Wall {
 }
 
 class Ray {
-    constructor(x, y) {
+    constructor(x, y, dir) {
         this.x = x
         this.y = y
-        this.dir = {
-            x: 1,
-            y: 0
-        }
+        this.dir = dir
     }
 
-    draw(color) {
+    cast(point, color) {
         ctx.strokeStyle = color
-        ctx.lineWidth = 2
-        ctx.beginPath()
-        ctx.moveTo(this.x, this.y)
-        ctx.lineTo(this.x + this.dir.x * 10, this.y + this.dir.y * 10)
-        ctx.stroke()
-    }
-
-    cast(point) {
-        console.log(point)
-        ctx.strokeStyle = "white"
         ctx.lineWidth = 2
         ctx.beginPath()
         ctx.moveTo(this.x, this.y)
@@ -88,8 +75,8 @@ class Ray {
         return (number - min) / (max - min)
     }
 
-    setDirection(x, y) {
-        this.dir.x = this.normalize(x - this.x, 0, canvas.width)
-        this.dir.y = this.normalize(y - this.y, 0, canvas.height)
-    }
+    // setDirection(x, y) {
+    //     this.dir.x = this.normalize(x - this.x, 0, canvas.width)
+    //     this.dir.y = this.normalize(y - this.y, 0, canvas.height)
+    // }
 }
