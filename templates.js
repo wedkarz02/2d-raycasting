@@ -74,9 +74,4 @@ class Ray {
     normalize(number, min, max) {
         return (number - min) / (max - min)
     }
-
-    // setDirection(x, y) {
-    //     this.dir.x = this.normalize(x - this.x, 0, canvas.width)
-    //     this.dir.y = this.normalize(y - this.y, 0, canvas.height)
-    // }
 }
