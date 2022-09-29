@@ -44,15 +44,26 @@ const drawText = (mouseX, mouseY, lineHeight) => {
     ctx.fillText(`Mouse Pos Y: ${mouseY}`, 0, lineHeight * 2)
 }
 
+const angleToCoordiantes = (angle) => {
+    return {
+        x: Math.cos(angle),
+        y: Math.sin(angle)
+    }
+}
+
 (function main() {
+    // SETUP
     const walls = generateWalls(5, 0.05)
     const lineHeight = 18
 
     drawText(0, 0, lineHeight)
     drawWalls(walls)
     
-    const ray = new Ray(100, 200)
+    angle = Math.PI
+    const dir = angleToCoordiantes(-angle)
+    const ray = new Ray(0, 0, dir)
 
+    // LOOP
     window.onmousemove = (ev) => {
         ctx.clearRect(0, 0, canvas.width, canvas.height)
     
@@ -65,7 +76,6 @@ const drawText = (mouseX, mouseY, lineHeight) => {
         drawText(mouseX, mouseY, lineHeight)
         drawWalls(walls)
 
-        ray.setDirection(1, 1)
         for (const wall of walls) {
             const point = ray.wallIntersectionCheck(wall)
             if (point) {
