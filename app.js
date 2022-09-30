@@ -98,11 +98,25 @@ const calculateDistance = (x1, y1, x2, y2) => {
             ray.x = mouseX
             ray.y = mouseY
 
+            let closestPoint = null
+            let closestDistance = Infinity
+
             for (const wall of walls) {
                 const intersectionPoint = ray.wallIntersectionCheck(wall)
+                
                 if (intersectionPoint) {
-                    ray.cast(intersectionPoint, "rgba(255, 255, 255, 0.4)")
+                    const currentDistance = 
+                        calculateDistance(ray.x, ray.y, intersectionPoint.x, intersectionPoint.y)
+
+                    if (currentDistance < closestDistance) {
+                        closestDistance = currentDistance
+                        closestPoint = intersectionPoint
+                    }
                 }
+            }
+
+            if (closestPoint) {
+                ray.cast(closestPoint, "rgba(255, 255, 255, 0.4)")
             }
         }
     }
