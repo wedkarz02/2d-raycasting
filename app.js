@@ -34,15 +34,13 @@ const generateWalls = (numberOfWalls, marginFactor) => {
 const generateRays = (angleStep) => {
     let rays = new Array()
 
-    // if (!(360 % angleStep === 0)) {
-    //     angleStep = 10
-    // }
+    if (!(360 % angleStep === 0)) {
+        angleStep = 10
+    }
 
-    let index = 0
     for (let angle = 0; angle < 360; angle += angleStep) {
         const dir = angleToCoordiantes(angle)
-        rays[index] = new Ray(0, 0, dir)
-        index++
+        rays.push(new Ray(0, 0, dir))
     }
 
     return rays
