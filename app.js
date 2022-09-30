@@ -70,6 +70,10 @@ const degreeToRadians = (angle) => {
     return angle * (Math.PI / 180)
 }
 
+const calculateDistance = (x1, y1, x2, y2) => {
+    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+}
+
 (function main() {
     // SETUP
     const walls = generateWalls(5, 0.05)
@@ -78,8 +82,7 @@ const degreeToRadians = (angle) => {
     drawText(0, 0, lineHeight)
     drawWalls(walls)
 
-    const rays = generateRays(1)
-    console.log(rays);
+    const rays = generateRays(5)
 
     // LOOP
     window.onmousemove = (ev) => {
