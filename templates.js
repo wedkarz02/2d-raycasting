@@ -15,10 +15,6 @@ class Wall {
         ctx.lineTo(this.x2, this.y2)
         ctx.stroke()
     }
-
-    calculateLength() {
-        return Math.sqrt((this.x2 - this.x1) ** 2 + (this.y2 - this.y1) ** 2)
-    }
 }
 
 class Ray {
