@@ -79,10 +79,17 @@ const calculateDistance = (x1, y1, x2, y2) => {
     const walls = generateWalls(5, 0.05)
     const lineHeight = 18
 
+    walls.push(
+        new Wall(0, 0, canvas.width, 0),                            // Top wall
+        new Wall(canvas.width, 0, canvas.width, canvas.height),     // Right wall
+        new Wall(canvas.width, canvas.height, 0, canvas.height),    // Bottom wall
+        new Wall(0, canvas.height, 0, 0)                            // Left wall
+    )
+
     drawText(0, 0, lineHeight)
     drawWalls(walls)
 
-    const rays = generateRays(5)
+    const rays = generateRays(1)
 
     // LOOP
     window.onmousemove = (ev) => {
