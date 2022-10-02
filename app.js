@@ -34,13 +34,12 @@ const generateWalls = (numberOfWalls, marginFactor) => {
 const generateRays = (angleStep) => {
     let rays = new Array()
 
-    if (angleStep === 0 || angleStep === NaN) {
+    // Set a default value of 10 to angleStep in case of an invalid input.
+    if (angleStep <= 0 || isNaN(angleStep)) {
+        angleStep = 10
+    } else if (!Number.isInteger(360 / angleStep)) {
         angleStep = 10
     }
-
-    // if (!(360 % angleStep === 0)) {
-    //     angleStep = 10
-    // }
 
     for (let angle = 0; angle < 360; angle += angleStep) {
         const dir = angleToCoordiantes(degreeToRadians(angle))
@@ -93,7 +92,7 @@ const calculateDistance = (x1, y1, x2, y2) => {
     drawText(0, 0, lineHeight)
     drawWalls(walls)
 
-    const rays = generateRays(1)
+    const rays = generateRays(0.5)
 
     // LOOP
     window.onmousemove = (ev) => {
