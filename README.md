@@ -3,4 +3,4 @@
 ### TODO
 * [x] Stop casting the ray after it intersects with the closest wall.
 * [x] Add canvas boundry walls
-* [ ] Fix angle gaps
+* [x] Fix angle gaps
